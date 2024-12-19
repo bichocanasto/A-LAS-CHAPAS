@@ -266,8 +266,8 @@ def game():
     while game_on:
         offset_x_pista -= car.background_speed
         dibujar_fondo(screen, imgSpace, offset_x_pista, ancho_pista)
-        puntos_para_nivel_2 = 4#30
-        puntos_para_nivel_3 = 8#70
+        puntos_para_nivel_2 = 30
+        puntos_para_nivel_3 = 70
         nivel_actual = 1
 
         for event in pygame.event.get():
