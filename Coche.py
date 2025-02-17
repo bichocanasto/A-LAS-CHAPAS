@@ -26,13 +26,13 @@ class Coche(pygame.sprite.Sprite):
             self.max_collisions = 3
             self.background_speed = 12
         elif tipo == "eva":
-            self.speed_boost = float(0.6)
-            self.max_collisions = 5
-            self.background_speed = 9
+            self.speed_boost = float(1.3)
+            self.max_collisions = 4
+            self.background_speed = 15
         elif tipo == "verde":
-            self.speed_boost = float(1.2)
-            self.max_collisions = 2
-            self.background_speed = 14
+            self.speed_boost = float(1.6)
+            self.max_collisions = 5
+            self.background_speed = 17
 
 
     def cargar_imagen(self, tipo):

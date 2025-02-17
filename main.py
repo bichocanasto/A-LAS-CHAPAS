@@ -4,6 +4,7 @@ import time
 import Coche
 import Roca
 import sys
+import os
 from Boton import Boton
 
 # width and height of the display
@@ -126,12 +127,15 @@ def options():
         OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(400, 75))
         screen.blit(OPTIONS_TEXT, OPTIONS_RECT)
 
-        linea = get_font(16).render("Velocidad +25   Velocidad +10   Velocidad +50", True, "firebrick1")
-        linea_rect = linea.get_rect(center=(SCREEN_WIDTH // 2 - 1, SCREEN_HEIGHT // 2 + 169))
+        linea = get_font(16).render("120 TRANQUI                                ", True, "red")
+        linea_rect = linea.get_rect(center=(SCREEN_WIDTH // 2 - 1, SCREEN_HEIGHT // 2 + 60))
         screen.blit(linea, linea_rect)
-        linea1 = get_font(16).render("Impactos +3     Impactos +5     Impactos +2", True, "firebrick1")
-        linea1_rect = linea1.get_rect(center=(SCREEN_WIDTH // 2 - 15, SCREEN_HEIGHT // 2 + 189))
+        linea1 = get_font(16).render("220 A PLENO", True, "red")
+        linea1_rect = linea1.get_rect(center=(SCREEN_WIDTH // 2 - 15, SCREEN_HEIGHT // 2 + 120))
         screen.blit(linea1, linea1_rect)
+        linea2 = get_font(16).render("                                  A FONDO LO QUE DE", True, "red")
+        linea2_rect = linea2.get_rect(center=(SCREEN_WIDTH // 2 - 15, SCREEN_HEIGHT // 2 + 190))
+        screen.blit(linea2, linea2_rect)
 
         OPTIONS_BACK = Boton(image=None, pos=(400, 560), 
                             text_input="VOLVER AL MENU PRINCIPAL", font=get_font(15), base_color="Black", hovering_color="Green")
@@ -277,9 +281,9 @@ def game():
                 if event.key == pygame.K_ESCAPE:
                     game_on = False
                 elif event.key == pygame.K_DOWN:
-                    car.move_y = 7
+                    car.move_y = 4
                 elif event.key == pygame.K_UP:
-                    car.move_y = -7
+                    car.move_y = -4
                 elif event.key == pygame.K_p:  # Si se presiona la tecla "p"
                         paused = not paused  # Cambia el estado de pausa
                         if paused:
@@ -327,19 +331,19 @@ def game():
                     game_over_screen()
                     return
             
-        if adjusted_score >= 20:
+        if adjusted_score >= 10:
             roca_interval = 860
-        if adjusted_score >= 40:
+        if adjusted_score >= 20:
             roca_interval = 820
-        if adjusted_score >= 65:
+        if adjusted_score >= 35:
             roca_interval = 780 
-        if adjusted_score >= 85:
+        if adjusted_score >= 45:
             roca_interval = 750
-        if adjusted_score >= 99:
+        if adjusted_score >= 55:
             roca_interval = 720 
-        if adjusted_score >= 120:
+        if adjusted_score >= 65:
             roca_interval = 700 
-        if adjusted_score >= 145:
+        if adjusted_score >= 75:
             roca_interval = 670 
             
         if pygame.time.get_ticks() - roca_timer >= roca_interval:
@@ -375,16 +379,14 @@ def game():
         if adjusted_score >= puntos_para_nivel_3 and nivel_actual == 2:
             imgSpace2 = imgSpace3
             nivel_actual = 3
-            texto = get_font(45).render("¡ULTIMO NIVEL!", True, ("purple"))
+            texto = get_font(40).render("¡ULTIMO TRAMO!", True, ("purple"))
             screen.blit(texto, (screen.get_width() // 2 - texto.get_width() // 2,
                                 screen.get_height() // 2 - texto.get_height() // 2 + 100))
             if nivel_actual == 3:  # Solo cambiar si no es la música actual
                 cambiar_musica("nivel3")
 
 
-            
-
-
+        car.update()
         pygame.display.flip()
         clock.tick(FPS)
 

@@ -1,8 +1,6 @@
 import pygame
 import random
 
-
-
 class Roca(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -14,7 +12,7 @@ class Roca(pygame.sprite.Sprite):
                       pygame.image.load("images/cocheblack.png").convert_alpha()
                       ])
         self.image_collision = pygame.image.load("images/crash.png").convert_alpha()
-        self.rect =  pygame.Rect(random.randint(790,800),random.randint(250,530),190,70)
+        self.rect =  pygame.Rect(random.randint(790,800),random.randint(250,480),190,70)
         self.mask = pygame.mask.from_surface(self.image)
 
          # Límites de movimiento vertical
@@ -29,4 +27,4 @@ class Roca(pygame.sprite.Sprite):
             self.collided = True  # Marca como colisionada para evitar multiples registros
 
     def update(self):
-        self.rect.x +=-7
+        self.rect.x +=-8
